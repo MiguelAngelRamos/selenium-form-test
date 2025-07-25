@@ -28,7 +28,7 @@ public class FormularioTest {
   @BeforeEach
   void setupTest() {
     driver = new ChromeDriver();
-    // driver.manage().window().maximize();
+    driver.manage().window().setSize(new org.openqa.selenium.Dimension(1366, 768));
     driver.get("https://selenium-bootcamp.netlify.app/");
     formularioPage = new FormularioPage(driver);
   }
