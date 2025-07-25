@@ -63,20 +63,27 @@ public class FormularioPage {
      * }
    */
   public void selectGender(String gender) {
+    WebElement radio = null;
     switch(gender.toLowerCase()) {
       case "masculino":
-        driver.findElement(genderMale).click();
+        radio = driver.findElement(genderMale);
         break;
       case "femenino":
-        driver.findElement(genderFemale).click();
+        radio = driver.findElement(genderFemale);
         break;
       case "otro":
-        driver.findElement(genderOther).click();
+        radio = driver.findElement(genderOther);
         break;
       default:
         System.out.println("Opción no válida");
         break;
     }
+
+    if(radio != null) {
+      ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", radio);
+      ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -80)");
+      radio.click();
+    } 
   }
 
   public void selectHobby(String hobby) {
@@ -98,6 +105,8 @@ public class FormularioPage {
         System.out.println("Opción no válida");
         break;
     }
+
+ 
   }
 
   // En los select tienen un comportamiento especial, selenium puede interactuar con ellos aunque 
