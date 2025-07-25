@@ -40,7 +40,7 @@ public class FormularioTest {
     formularioPage.selectGender("Femenino");
     formularioPage.setMobile("1234567890");
     formularioPage.selectHobby("Lectura");
-    formularioPage.selectHobby("Musica");
+    formularioPage.selectHobby("Música");
     formularioPage.setAddress("Calle Falsa 123");
     formularioPage.selectState("Región Metropolitana");
     formularioPage.selectCity("Santiago");
@@ -53,7 +53,7 @@ public class FormularioTest {
     assertTrue(modalContent.contains("Femenino"));
     assertTrue(modalContent.contains("1234567890"));
     assertTrue(modalContent.contains("Lectura"));
-    assertTrue(modalContent.contains("Musica"));
+    assertTrue(modalContent.contains("Música"));
     assertTrue(modalContent.contains("Calle Falsa 123"));
     assertTrue(modalContent.contains("Región Metropolitana"));
     assertTrue(modalContent.contains("Santiago"));
