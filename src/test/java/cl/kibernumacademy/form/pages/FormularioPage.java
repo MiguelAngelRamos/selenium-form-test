@@ -28,5 +28,55 @@ public class FormularioPage {
 
   private By modalBodyContent = By.id("confirmationModal");
 
+  public FormularioPage(WebDriver driver) {
+    this.driver = driver;
+  }
+
+  public void setFirstName(String name) {
+    driver.findElement(firstName).clear();
+    driver.findElement(firstName).sendKeys(name);
+  }
+  public void setLastName(String last) {
+    driver.findElement(lastName).clear();
+    driver.findElement(lastName).sendKeys(last);
+  }
+
+  public void setUserEmail(String email) {
+    driver.findElement(userEmail).clear();
+    driver.findElement(userEmail).sendKeys(email);
+  }
+
+  public void setMobile(String mobile) {
+    driver.findElement(userNumber).clear();
+    driver.findElement(userNumber).sendKeys(mobile);
+  }
+
+  public void setAddress(String address) {
+    driver.findElement(currentAddress).clear();
+    driver.findElement(currentAddress).sendKeys(address);
+  }
+
+  /*
+   *  * public void selectGender(String gender) {
+     *     driver.findElement(By.xpath("//label[text()='" + gender + "']")).click();
+     * }
+   */
+  public void selectGender(String gender) {
+    switch(gender.toLowerCase()) {
+      case "masculino":
+        driver.findElement(genderMale).click();
+        break;
+      case "femenino":
+        driver.findElement(genderFemale).click();
+        break;
+      case "otro":
+        driver.findElement(genderOther).click();
+        break;
+      default:
+        System.out.println("Género no válido");
+        break;
+    }
+  }
+
 
 }
