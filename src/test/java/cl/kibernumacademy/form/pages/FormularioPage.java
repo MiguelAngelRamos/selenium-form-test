@@ -78,5 +78,25 @@ public class FormularioPage {
     }
   }
 
+  public void selectHobby(String hobby) {
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(hobbyReading));
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(hobbyMusic));
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(hobbySports));
+
+    switch(hobby.toLowerCase()) {
+      case "lectura":
+        driver.findElement(hobbyReading).click();
+        break;
+      case "música":
+        driver.findElement(hobbyMusic).click();
+        break;
+      case "deportes":
+        driver.findElement(hobbySports).click();
+        break;
+      default:
+        System.out.println("Opción no válida");
+        break;
+    }
+  }
 
 }
