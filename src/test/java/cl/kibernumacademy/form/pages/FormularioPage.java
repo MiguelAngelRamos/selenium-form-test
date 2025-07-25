@@ -73,7 +73,7 @@ public class FormularioPage {
         driver.findElement(genderOther).click();
         break;
       default:
-        System.out.println("Género no válido");
+        System.out.println("Opción no válida");
         break;
     }
   }
