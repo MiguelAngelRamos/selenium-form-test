@@ -1,5 +1,6 @@
 package cl.kibernumacademy.form.pages;
 import org.openqa.selenium.*;
+import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.support.ui.Select;
 
 public class FormularioPage {
@@ -97,6 +98,34 @@ public class FormularioPage {
         System.out.println("Opción no válida");
         break;
     }
+  }
+
+  // En los select tienen un comportamiento especial, selenium puede interactuar con ellos aunque 
+  // no estén visibles en la pantalla
+  public void selectState(String state) {
+    Select stateDropdown = new Select(driver.findElement(stateSelect));
+    stateDropdown.selectByVisibleText(state);
+  }
+
+  public void selectCity(String city) {
+    Select cityDropdown = new Select(driver.findElement(citySelect));
+    cityDropdown.selectByVisibleText(city);
+  }
+
+  public void submitForm() {
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(submitButton));
+    driver.findElement(submitButton).click();
+  }
+
+  public String getModalBodyContent() {
+    try {
+       Thread.sleep(2000); // Espera para que el modal se cargue completamente y espera siempre 2 segundos
+       //! No es la mejor práctica usar Thread.sleep, pero es una forma simple de esperar
+    }
+     catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    return driver.findElement(modalBodyContent).getText();
   }
 
 }
