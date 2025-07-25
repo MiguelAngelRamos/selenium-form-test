@@ -2,6 +2,7 @@ package cl.kibernumacademy.form.tests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ public class FormularioTest {
   @BeforeEach
   void setupTest() {
     driver = new ChromeDriver();
-    driver.manage().window().maximize();
+    // driver.manage().window().maximize();
     driver.get("https://selenium-bootcamp.netlify.app/");
     formularioPage = new FormularioPage(driver);
   }
@@ -58,6 +59,11 @@ public class FormularioTest {
     assertTrue(modalContent.contains("Región Metropolitana"));
     assertTrue(modalContent.contains("Santiago"));
 
+  }
+
+  @AfterEach
+  void tearDown() {
+    if(driver != null) driver.quit();
   }
 
 
